@@ -1,0 +1,17 @@
+{
+	"name": "ds_source_sql_for_until",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Azuresql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "MASTER_TABLE"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

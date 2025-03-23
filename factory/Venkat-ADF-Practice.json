@@ -1,0 +1,21 @@
+{
+	"name": "Venkat-ADF-Practice",
+	"properties": {
+		"globalParameters": {
+			"Container": {
+				"type": "string",
+				"value": "adlsdeltalivetables"
+			},
+			"File_Path": {
+				"type": "string",
+				"value": "destination"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8a153e75-8d00-48c5-b9bf-d38cfccaa92e",
+		"tenantId": "51071816-6011-4d85-aba1-3343ada9bdb7"
+	}
+}

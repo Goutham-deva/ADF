@@ -1,0 +1,105 @@
+{
+	"name": "pl_fail_activity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@pipeline().parameters.inputvalue",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "filter",
+							"activities": [
+								{
+									"name": "filter",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "pl_filter",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "append",
+							"activities": [
+								{
+									"name": "append",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "pl_append",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "setvariable",
+							"activities": [
+								{
+									"name": "set variable",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "pl_setvariable",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						}
+					],
+					"defaultActivities": [
+						{
+							"name": "default_fail",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "you have provided the wrong input, please provide valid input",
+								"errorCode": "420"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"inputvalue": {
+				"type": "string",
+				"defaultValue": "jhiuhiuhui"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-03-19T12:23:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
